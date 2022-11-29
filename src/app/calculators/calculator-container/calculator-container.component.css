@@ -1,0 +1,9 @@
+.calcNavi {
+  border-bottom: 1px solid #a0a0a0;
+}
+
+.calcNavi a {
+  cursor: pointer;
+  color: blue;
+  margin-right: 20px;
+}

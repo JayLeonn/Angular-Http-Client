@@ -1,0 +1,50 @@
+<div>
+  <h2>BOOKS</h2>
+  <button>
+    <a routerLink="/book/0">CREATE A BOOK</a>
+  </button>
+  <p>We have {{ books.length | plural: "book":"books" }} !</p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>
+          <input [(ngModel)]="titleFilter" placeholder="title" />
+        </th>
+        <th>
+          <input [(ngModel)]="authorFilter" placeholder="author" />
+        </th>
+        <th>
+          <select [(ngModel)]="sortOrder">
+            <option value="title">Sort By Title</option>
+            <option value="author">Sort By Author</option>
+          </select>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let book of books | sort: sortOrder; let i = index">
+        <tr *ngIf="canShow(book)" [class.odd]="(i + 1) % 2">
+          <td>
+            <a [routerLink]="['/book', book.id]">{{ book.id }}</a> 
+          </td>
+          <td>{{ book.title }}</td>
+          <td>{{ book.author }}</td>
+          <td
+            [ngClass]="{
+              tooSmall: book.price < 12,
+              ratherBig: book.price > 13
+            }"
+          >
+            {{ book.price | currency: "EUR":"symbol":"1.2-2":"fi" }}
+          </td>
+          <td>{{ book.published | date: "shortDate":"":"fi" }}</td>
+          <td>
+            <button mat-flat-button (click)="deleteBook(book)" color="warn">
+              Delete
+            </button>
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div>

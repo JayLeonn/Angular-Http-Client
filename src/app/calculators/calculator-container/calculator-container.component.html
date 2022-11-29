@@ -1,0 +1,26 @@
+<div>
+  <h2>Calculator Container (Parent)</h2>
+  <div class="calcNavi">
+    <a (click)="selected = 'binding'">Binding calculator</a>
+    <a (click)="selected = 'event'">Event calculator</a>
+  </div>
+  <ng-container [ngSwitch]="selected">
+    <div *ngSwitchCase="'binding'">
+      <app-calculator
+        [fig1]="10"
+        [fig2]="15"
+        (resultChange)="calcResult = $event"
+      >
+      </app-calculator>
+      <p>Sum: {{ calcResult }}</p>
+    </div>
+    <div *ngSwitchCase="'event'">
+      <app-event-calculator
+        [(eventFig1)]="parentFig1"
+        [(eventFig2)]="parentFig2"
+        (resultChange)="parentResult = $event"
+      ></app-event-calculator>
+      <p>{{ parentFig1 }} + {{ parentFig2 }} = {{ parentResult }}</p>
+    </div>
+  </ng-container>
+</div>

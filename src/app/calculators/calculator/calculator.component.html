@@ -1,0 +1,9 @@
+<div>
+  <h2>Basic calculator (two way binding)</h2>
+  <p><ng-content></ng-content></p>
+  <input type="number" [(ngModel)]="fig1" />
+  +
+  <input type="number" [(ngModel)]="fig2" />
+  =
+  {{ fig1 + fig2 }}
+</div>

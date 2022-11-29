@@ -1,0 +1,17 @@
+<div>
+  <h2>Event Calculator (keyup event)</h2>
+  <input
+    type="number"
+    id="eventFig1"
+    (keyup)="calculate($event)"
+    [value]="eventFig1"
+  />
+  +
+  <input
+    type="number"
+    id="eventFig2"
+    (keyup)="calculate($event)"
+    [value]="eventFig2"
+  />
+  = Getter: {{ result }} --- Method: {{ calculatedResult }}
+</div>

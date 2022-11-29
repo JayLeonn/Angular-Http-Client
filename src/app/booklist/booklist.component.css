@@ -1,0 +1,17 @@
+.tooSmall {
+  color: red;
+}
+
+.ratherBig {
+  color: green;
+}
+
+/* .odd {
+  background-color: lightgray;
+} */
+
+.delLink {
+  cursor: pointer;
+  color: red;
+  text-decoration: none;
+}
